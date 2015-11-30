@@ -7,6 +7,9 @@ import java.util.Observer;
 
 import javax.swing.JOptionPane;
 
+import src.com.std.model.Save;
+import src.com.std.model.Load;
+
 import src.com.std.controller.listener.AboutActionListener;
 import src.com.std.controller.listener.AppointmentSelectionMouseListener;
 import src.com.std.controller.listener.DateSelectionActionListener;
@@ -236,7 +239,7 @@ public class CalendarController implements Observer {
 		if(dialog.getFile() != null) {
 			String path = dialog.getDirectory() + dialog.getFile();
 			try {
-				theModel.load(new File(path));
+				theModel.load(new File(path), new Load(new File(path), theModel));
 				ret = true;
 			} catch(Exception ex) {
 				handleException(ex);
@@ -258,7 +261,7 @@ public class CalendarController implements Observer {
 			if(theModel.getFile() == null)
 				ret = saveAs();
 			else {
-				theModel.save(theModel.getFile());
+				theModel.save(theModel.getFile(), new Save(theModel.getFile(), theModel));
 				ret = true;
 			}
 		} catch(Exception ex) {
@@ -276,7 +279,7 @@ public class CalendarController implements Observer {
 		if(ret) {
 			String path = dialog.getDirectory() + dialog.getFile();
 			try {
-				theModel.save(new File(path));
+				theModel.save(new File(path), new Save(new File(path), theModel));
 			} catch (Exception ex) {
 				handleException(ex);
 			}

@@ -292,6 +292,38 @@ public class CalendarModel extends Observable {
 	 */
 	private File curFile;
 	
+	public CalendarModel getThat() {
+		return that;
+	}
+
+	public Date getCurDate() {
+		return curDate;
+	}
+
+	public RefAppointment getCurAppt() {
+		return curAppt;
+	}
+
+	public File getCurFile() {
+		return curFile;
+	}
+
+	public ObservableSet<AppointmentTemplate> getApptTmplSet() {
+		return apptTmplSet;
+	}
+
+	public ObservableSet<RefAppointment> getApptSet() {
+		return apptSet;
+	}
+
+	public boolean isDiffFile() {
+		return diffFile;
+	}
+
+	public AppointmentTemplate getDefaultApptTmpl() {
+		return defaultApptTmpl;
+	}
+
 	/**
 	 * Set of AppointmentTemplates
 	 */
@@ -445,17 +477,10 @@ public class CalendarModel extends Observable {
 	 * @throws IOException if an I/O error occurs while writing stream header
 	 * @throws NullPointerException if the passed URI is null
 	 */
-	public void save(File file) throws IOException {
-		if(file == null)
-			throw new NullPointerException("file");
-		ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
-		out.writeObject(defaultApptTmpl);
-		out.writeInt(apptTmplSet.size());
-		for(AppointmentTemplate apptTmpl : apptTmplSet)
-			out.writeObject(apptTmpl);
-		out.writeInt(apptSet.size());
-		for(RefAppointment appt : apptSet)
-			out.writeObject(appt);
+	public void save(File file, Save s) throws IOException {
+		
+		s.save();
+		
 		curFile = file;
 		diffFile = false;
 		this.setChanged();
@@ -469,25 +494,10 @@ public class CalendarModel extends Observable {
 	 * @param uri the path to load the file from, null if a new file should be loaded
 	 * @throws IOException if an I/O error occurs while writing stream header
 	 */
-	public void load(File file) throws IOException, ClassNotFoundException {
-		Set<AppointmentTemplate> apptTmplSet = new HashSet<AppointmentTemplate>();
-		Set<RefAppointment> apptSet = new HashSet<RefAppointment>();
-		AppointmentTemplate defaultApptTmpl = getNewDefaults();
-		if(file != null) {
-			ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
-			defaultApptTmpl = (AppointmentTemplate)in.readObject();
-			int count = in.readInt();
-			while(count-- > 0)
-				apptTmplSet.add((AppointmentTemplate)in.readObject());
-			count = in.readInt();
-			while(count-- > 0)
-				apptSet.add((RefAppointment)in.readObject());
-		}
-		this.defaultApptTmpl.setFields(defaultApptTmpl);
-		this.apptSet.clear();
-		this.apptTmplSet.clear();
-		this.apptTmplSet.addAll(apptTmplSet);
-		this.apptSet.addAll(apptSet);
+	public void load(File file, Load l) throws IOException, ClassNotFoundException {
+		
+		l.save();
+		
 		curFile = file;
 		diffFile = false;
 		this.setChanged();

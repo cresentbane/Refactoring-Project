@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import src.com.std.controller.CalendarController;
+import src.com.std.model.Load;
 
 
 /**
@@ -40,7 +41,7 @@ public class NewCalendarActionListener implements ActionListener {
 	 */
 	public void actionPerformed(ActionEvent e) {
 		try {
-			controller.getModel().load(null);
+			controller.getModel().load(null, new Load(null, controller.getModel()));
 		} catch(Exception ex) {
 			controller.handleException(ex);
 		}
