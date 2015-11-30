@@ -24,6 +24,7 @@ import src.com.std.controller.listener.RemoveAllAppointmentActionListener;
 import src.com.std.controller.listener.RemoveAppointmentActionListener;
 import src.com.std.controller.listener.SaveAsCalendarActionListener;
 import src.com.std.controller.listener.SaveCalendarActionListener;
+import src.com.std.controller.listener.ViewHistoryActionListener;
 import src.com.std.model.CalendarModel;
 import src.com.std.model.appointment.AppointmentTemplate;
 import src.com.std.model.appointment.RefAppointment;
@@ -88,6 +89,10 @@ public class CalendarController implements Observer {
 		AppointmentSelectionMouseListener apptSelL = new AppointmentSelectionMouseListener(this);
 		theView.addAppointmentSelectionListener(apptSelL);
 		
+		ViewHistoryActionListener vv = new ViewHistoryActionListener(this);
+		theView.addViewHistoryActionListener(vv);
+
+
 		// listens for when a date is selected
 		DateSelectionActionListener dateSelL = new DateSelectionActionListener(this);
 		theView.addDateSelectionListener(dateSelL);
@@ -172,7 +177,7 @@ public class CalendarController implements Observer {
 	public boolean confirm(Runnable runnable) {
 		boolean ret = false;
 		
-		// if the model has changed since the last save
+		// if the model has changed since the last save	
 		if(theModel.isDifferentFromFile()) {
 			
 			// loop while the user's decision hasn't been made.

@@ -51,7 +51,13 @@ public class AppointmentPanel extends JToggleButton {
 	private JButton editAllAppt;
 	private JButton removeSingleAppt;
 	private JButton removeAllAppt;
+
+	private JButton viewHistory;
 	
+	public void addViewHistListener(ActionListener listener) {
+		viewHistory.addActionListener(listener);
+	}
+
 	public void addEditSingleListener(ActionListener listener) {
 		editSingleAppt.addActionListener(listener);
 	}
@@ -86,6 +92,7 @@ public class AppointmentPanel extends JToggleButton {
 			editAllAppt.setEnabled(false);
 			removeSingleAppt.setEnabled(false);
 			removeAllAppt.setEnabled(false);
+			viewHistory.setEnabled(true);
 		} else {
 			titleField.setText(appt.getTitle());
 			locationField.setText(appt.getLocation());
@@ -98,6 +105,7 @@ public class AppointmentPanel extends JToggleButton {
 			editSingleAppt.setEnabled(appt.getPattern() != null);
 			editAllAppt.setEnabled(true);
 			removeSingleAppt.setEnabled(true);
+			viewHistory.setEnabled(true);
 			removeAllAppt.setEnabled(appt.getPattern() != null);
 		}
 	}
@@ -142,7 +150,7 @@ public class AppointmentPanel extends JToggleButton {
 		editAllAppt = new JButton("edit");
 		removeSingleAppt = new JButton("remove");
 		removeAllAppt = new JButton("remove recurring");
-		
+		viewHistory = new JButton("view appointment history");
 
 		JPanel northDataPanel = new JPanel();
 		northDataPanel.setOpaque(false);
@@ -182,6 +190,7 @@ public class AppointmentPanel extends JToggleButton {
 		buttons.setOpaque(false);
 		buttons.setBorder(new EmptyBorder(10, 0, 4, 0));
 		buttons.setLayout(new GridLayout(0, 2));
+		buttons.add(viewHistory);
 		buttons.add(editAllAppt);
 		buttons.add(editSingleAppt);
 		buttons.add(removeSingleAppt);

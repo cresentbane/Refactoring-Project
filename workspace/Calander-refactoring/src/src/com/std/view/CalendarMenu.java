@@ -35,7 +35,12 @@ public class CalendarMenu extends JMenuBar {
 	private final JMenuItem removeAllAppointment;
 	private final JMenuItem preferences;
 	private final JMenuItem about;
-	
+	/**
+	private final JMenuItem List;
+	public JMenuItem getListMenuItem(){
+		return List;
+	}
+	**/
 	public JMenuItem getNewCalendarMenuItem() {
 		return newCalendar;
 	}
@@ -80,7 +85,11 @@ public class CalendarMenu extends JMenuBar {
 	
 	public CalendarMenu() {
 		super();
-		
+		/**
+		List = new JMenuItem("List");
+		List.setMnemonic(KeyEvent.VK_F);
+		add(List);
+		**/
 		JMenu fileMenu = new JMenu("File");
 		fileMenu.setMnemonic(KeyEvent.VK_F);
 		add(fileMenu);

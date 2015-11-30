@@ -233,6 +233,10 @@ public class CalendarView extends JFrame {
 		appointmentView.addRemoveSingleListener(listener);
 	}
 	
+	public void addViewHistoryActionListener(ActionListener listener){
+		appointmentView.addViewHistListener(listener);
+	}
+	
 	/**
 	 * This passes a mouse listener down to the different views
 	 * @param listener is the mouse listener to be added to the 
