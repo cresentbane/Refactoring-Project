@@ -33,7 +33,7 @@ import src.com.std.view.block.WeeklyDayBlock;
  * 
  */
 
-public class WeeklyPanel extends JPanel  {
+public class WeeklyPanel extends JPanel implements Panels {
 	
 	/**
 	 * These are the representaions of all the days in this
@@ -126,7 +126,7 @@ public class WeeklyPanel extends JPanel  {
 	 * @param m is the mouse listener to be added to the appointment views
 	 */
 	
-	public void addAppointmentListeners(MouseListener m) {
+	public void addAppointmentListener(MouseListener m) {
 		for(WeeklyDayBlock d : blocks)
 			d.addAppointmentMouseListener(m);
 	}

@@ -37,7 +37,7 @@ import src.com.std.view.block.MonthlyDayBlock;
  * @author xxx
  * 
  */
-public class MonthlyPanel extends JPanel {
+public class MonthlyPanel extends JPanel implements Panels{
 	
 	private List<MonthlyDayBlock> blocks;
 

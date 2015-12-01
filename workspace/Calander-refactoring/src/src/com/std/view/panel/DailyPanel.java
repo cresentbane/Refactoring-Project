@@ -31,7 +31,7 @@ import src.com.std.view.block.WeeklyDayBlock;
  * 
  */
 
-public class DailyPanel extends JPanel  {
+public class DailyPanel extends JPanel implements Panels{
 	
 	/**
 	 * These are the representaions of all the days in this

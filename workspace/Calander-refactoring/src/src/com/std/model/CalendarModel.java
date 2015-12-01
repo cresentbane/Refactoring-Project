@@ -490,7 +490,6 @@ public class CalendarModel extends Observable {
 	/**
 	 * loads the data model from a file specified by the passed URI 
 	 * parameter, and notifies any CalendarModel observers
-	 * 
 	 * @param uri the path to load the file from, null if a new file should be loaded
 	 * @throws IOException if an I/O error occurs while writing stream header
 	 */
@@ -512,7 +511,7 @@ public class CalendarModel extends Observable {
 	public Set<AppointmentTemplate> getAppointmentTemplateSet() {
 		return apptTmplSet;
 	}
-
+	
 	/**
 	 * Returns the set of Appointment references
 	 * 

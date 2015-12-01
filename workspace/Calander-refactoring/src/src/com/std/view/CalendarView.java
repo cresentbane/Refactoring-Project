@@ -96,7 +96,7 @@ public class CalendarView extends JFrame {
 	 */
 	
 	public void addAppointmentSelectionListener(MouseListener mouse) {
-		weeklyView.addAppointmentListeners(mouse);
+		weeklyView.addAppointmentListener(mouse);
 		monthlyView.addAppointmentListener(mouse);
 		dailyView.addAppointmentListener(mouse);
 	}
