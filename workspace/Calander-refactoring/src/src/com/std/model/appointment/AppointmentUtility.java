@@ -123,25 +123,25 @@ public class AppointmentUtility {
 				State onSaturdayState= new onSaturdayState();
 				
 				context.setState(onMondayState);
-				onMondayState.doAction(context, ptt, text);
+				text = onMondayState.doAction(context, ptt, text);
 				
 				context.setState(onSundayState);
-				onSundayState.doAction(context, ptt, text);
+				text = onSundayState.doAction(context, ptt, text);
 				
 				context.setState(onWednesdayState);
-				onWednesdayState.doAction(context, ptt, text);
+				text = onWednesdayState.doAction(context, ptt, text);
 				
 				context.setState(onFridayState);
-				onFridayState.doAction(context, ptt, text);
+				text = onFridayState.doAction(context, ptt, text);
 				
 				context.setState(onThursdayState);
-				onThursdayState.doAction(context, ptt, text);
+				text = onThursdayState.doAction(context, ptt, text);
 				
 				context.setState(onTuesdayState);
-				onTuesdayState.doAction(context, ptt, text);
+				text = onTuesdayState.doAction(context, ptt, text);
 				
 				context.setState(onSaturdayState);
-				onSaturdayState.doAction(context, ptt, text);
+				text = onSaturdayState.doAction(context, ptt, text);
 				
 				
 				if(text.length() > 0)

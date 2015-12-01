@@ -9,7 +9,7 @@ public class onMondayState implements State {
 		// TODO Auto-generated method stub
 
 		if (ptt.onMonday()){
-			txt += (txt .length() == 0 ? "" : ", ") + "Monday";
+			txt += (txt.length() == 0 ? "" : ", ") + "Monday";
 		}else{
 			System.out.println("mo");
 		}
