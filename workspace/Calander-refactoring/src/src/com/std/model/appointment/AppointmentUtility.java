@@ -93,9 +93,11 @@ public class AppointmentUtility {
 					text = "recurs every " + ptt.instanceEvery() + " days ";
 				
 			} else if(pattern instanceof DayOfWeekPattern) {
-				
+				System.out.println("i'm heeeeeeere");
 				// generate the description string for DayOfWeekPattern
+				
 				DayOfWeekPattern ptt = (DayOfWeekPattern)pattern;
+				/**
 				if(ptt.onSunday())
 					text += (text.length() == 0 ? "" : ", ") + "Sunday";
 				if(ptt.onMonday())
@@ -110,6 +112,38 @@ public class AppointmentUtility {
 					text += (text.length() == 0 ? "" : ", ") + "Friday";
 				if(ptt.onSaturday())
 					text += (text.length() == 0 ? "" : ", ") + "Saturday";
+				**/
+				Context context = new Context();
+				State onMondayState= new onMondayState();
+				State onSundayState= new onSundayState();
+				State onWednesdayState= new onWednesdayState();
+				State onFridayState= new onFridayState();
+				State onThursdayState= new onThursdayState();
+				State onTuesdayState= new onTuesdayState();
+				State onSaturdayState= new onSaturdayState();
+				
+				context.setState(onMondayState);
+				onMondayState.doAction(context, ptt, text);
+				
+				context.setState(onSundayState);
+				onSundayState.doAction(context, ptt, text);
+				
+				context.setState(onWednesdayState);
+				onWednesdayState.doAction(context, ptt, text);
+				
+				context.setState(onFridayState);
+				onFridayState.doAction(context, ptt, text);
+				
+				context.setState(onThursdayState);
+				onThursdayState.doAction(context, ptt, text);
+				
+				context.setState(onTuesdayState);
+				onTuesdayState.doAction(context, ptt, text);
+				
+				context.setState(onSaturdayState);
+				onSaturdayState.doAction(context, ptt, text);
+				
+				
 				if(text.length() > 0)
 					text = "recurs on " + text;
 			}
@@ -129,7 +163,6 @@ public class AppointmentUtility {
 		
 		return text;
 	}
-	
 	public static String getDurationDescription(long ms) {
 		
 		// construct the base conversions
