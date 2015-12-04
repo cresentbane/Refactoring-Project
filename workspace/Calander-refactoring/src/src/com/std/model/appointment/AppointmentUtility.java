@@ -80,6 +80,15 @@ public class AppointmentUtility {
 	public static String getPatternDescription(RecurrencePattern pattern) {
 		// start with a blank string
 		String text = "";
+		// creating objects for the state pattern
+		Context context = new Context();
+		State onMondayState= new onMondayState();
+		State onSundayState= new onSundayState();
+		State onWednesdayState= new onWednesdayState();
+		State onFridayState= new onFridayState();
+		State onThursdayState= new onThursdayState();
+		State onTuesdayState= new onTuesdayState();
+		State onSaturdayState= new onSaturdayState();
 		
 		if(pattern != null) {
 			
@@ -97,31 +106,11 @@ public class AppointmentUtility {
 				// generate the description string for DayOfWeekPattern
 				
 				DayOfWeekPattern ptt = (DayOfWeekPattern)pattern;
+
+
 				/**
-				if(ptt.onSunday())
-					text += (text.length() == 0 ? "" : ", ") + "Sunday";
-				if(ptt.onMonday())
-					text += (text.length() == 0 ? "" : ", ") + "Monday";
-				if(ptt.onTuesday())
-					text += (text.length() == 0 ? "" : ", ") + "Tuesday";
-				if(ptt.onWednesday())
-					text += (text.length() == 0 ? "" : ", ") + "Wednesday";
-				if(ptt.onThursday())
-					text += (text.length() == 0 ? "" : ", ") + "Thursday";
-				if(ptt.onFriday())
-					text += (text.length() == 0 ? "" : ", ") + "Friday";
-				if(ptt.onSaturday())
-					text += (text.length() == 0 ? "" : ", ") + "Saturday";
-				**/
-				Context context = new Context();
-				State onMondayState= new onMondayState();
-				State onSundayState= new onSundayState();
-				State onWednesdayState= new onWednesdayState();
-				State onFridayState= new onFridayState();
-				State onThursdayState= new onThursdayState();
-				State onTuesdayState= new onTuesdayState();
-				State onSaturdayState= new onSaturdayState();
-				
+				 * the context is going to update the state if and only if the DayOfWeekPattern object and the state have the same day  
+				 */
 				context.setState(onMondayState);
 				text = onMondayState.doAction(context, ptt, text);
 				
