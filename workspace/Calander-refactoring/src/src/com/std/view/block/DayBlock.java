@@ -1,6 +1,9 @@
 package src.com.std.view.block;
 
 import java.util.Date;
+import java.util.Set;
+
+import src.com.std.model.appointment.RefAppointment;
 
 /**
  * This interface allows the listeners to figure out the date 
@@ -19,5 +22,5 @@ public interface DayBlock {
 	 */
 	
 	public Date getDate();
-	
+	void update(Set<RefAppointment> appts, Date d, RefAppointment r );
 }

@@ -8,17 +8,31 @@ import java.io.ObjectOutputStream;
 import src.com.std.model.appointment.AppointmentTemplate;
 import src.com.std.model.appointment.RefAppointment;
 
+/**
+ * This class is responsible for exporting a calendar 
+ * file out of the system.
+ * @author aliqa
+ */
 public class Save implements Persist{
 
 	File file;
 	CalendarModel cm;
 	
+	/**
+	 * The constructor takes the file the calendar must be exported 
+	 * to and the model to obtain the information
+	 * @param file
+	 * @param c
+	 */
 	public Save(File file, CalendarModel c) {
 		super();
 		this.file = file;
 		this.cm = c;
 	}
 
+	/**
+	 * The method that saves the calendar to the file.
+	 */
 	public void save() throws IOException {
 		if(file == null)
 			throw new NullPointerException("file");

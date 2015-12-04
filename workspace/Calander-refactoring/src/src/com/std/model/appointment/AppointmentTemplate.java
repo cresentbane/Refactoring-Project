@@ -277,6 +277,7 @@ public class AppointmentTemplate extends java.util.Observable implements Seriali
 	 * @throws ClassNotFoundException if there is a casting error
 	 * @throws IOException an I/O exception of some sort has occurred
 	 */
+	/**
 	private void readObject(ObjectInputStream istream) throws ClassNotFoundException, IOException {
 		internalSetTitle((String)istream.readObject());
 		internalSetDescription((String)istream.readObject());
@@ -284,13 +285,14 @@ public class AppointmentTemplate extends java.util.Observable implements Seriali
 		internalSetDuration(istream.readLong());
 		internalSetPattern((RecurrencePattern)istream.readObject());
 	}
-	
+	**/
 	/**
 	 * Saves the object to an object output stream
 	 * 
 	 * @param ostream the object stream to be writing to
 	 * @throws IOException an I/O exception of some sort has occurred
 	 */
+	/**
 	private void writeObject(ObjectOutputStream ostream) throws IOException {
 		ostream.writeObject(getTitle());
 		ostream.writeObject(getDescription());
@@ -298,6 +300,7 @@ public class AppointmentTemplate extends java.util.Observable implements Seriali
 		ostream.writeLong(getDuration());
 		ostream.writeObject(getPattern());
 	}
+	**/
 	
 	public Object clone() {
 		AppointmentTemplate ret = new AppointmentTemplate("", "", "", 0);

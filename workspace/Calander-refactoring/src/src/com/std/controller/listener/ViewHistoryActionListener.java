@@ -61,8 +61,7 @@ public class ViewHistoryActionListener implements ActionListener {
 	 */
 	public void actionPerformed(ActionEvent e) {
 
-		 getAll();
-
+		// providing the appropriate components to the frame
 	    JButton search = new JButton("Search");
 	    JButton all = new JButton("All Appointments");
 	    
@@ -76,29 +75,32 @@ public class ViewHistoryActionListener implements ActionListener {
 		
 		frame.add(bottomPanel, BorderLayout.NORTH);
 	    
+		// if the search button is clicked
 		search.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				getSearch(txt.getText());
 			}
 		});
 	    
+		// if the view all appointments button is clicked
 		all.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				getAll();
 			}
 		});
 	   
-
+		getAll();
 	}
 	
 	/**
-	 * searches for a match between the search string and
-	 * appointment attributes and displays the results.
+	 * This method searches for a match between the search 
+	 * string and appointment attributes and displays the 
+	 * results.
 	 * @param search
 	 */
 	private void getSearch(String search){
 		
-		//frame.removeAll();
+
 	    // create object of table and table model
 	    JTable table = new JTable();
 	    DefaultTableModel dtm = new DefaultTableModel(0, 0);
@@ -113,6 +115,7 @@ public class ViewHistoryActionListener implements ActionListener {
 	    frame.add(scrollPane, BorderLayout.CENTER);
 	    table.setEnabled(false);
 	    
+	    // getting the matching reference appointments
 	    ObservableSet<RefAppointment> set = new ObservableSet<RefAppointment>();
 		for (RefAppointment r: controller.theModel.getAppointmentSet()){
 			if (r.getTitle().toLowerCase().contains(search.toLowerCase())||r.getDescription().toLowerCase().contains(search.toLowerCase()) || r.getLocation().toLowerCase().contains(search.toLowerCase())){
@@ -120,6 +123,7 @@ public class ViewHistoryActionListener implements ActionListener {
 			}
 		}
 		
+		// adding appropriate data for each appointment in the table
 		for (RefAppointment r : set){
 			String dur = "";
 		    if (Long.toString(r.getDuration()/86400000).equals("0")){
@@ -155,6 +159,7 @@ public class ViewHistoryActionListener implements ActionListener {
 	    frame.add(scrollPane, BorderLayout.CENTER);
 	    table.setEnabled(false);
 
+	    // adding the data for all appointments in the calendar
 		for (RefAppointment r: controller.theModel.getAppointmentSet()){
 			String dur = "";
 		    if (Long.toString(r.getDuration()/86400000).equals("0")){

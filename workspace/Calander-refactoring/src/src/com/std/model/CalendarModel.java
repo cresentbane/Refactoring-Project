@@ -475,11 +475,17 @@ public class CalendarModel extends Observable {
 	 * 
 	 * @param uri the path to save the file to
 	 * @throws IOException if an I/O error occurs while writing stream header
+	 * @throws ClassNotFoundException 
 	 * @throws NullPointerException if the passed URI is null
 	 */
-	public void save(File file, Save s) throws IOException {
+	public void save(File file, Object s) throws IOException, ClassNotFoundException {
 		
-		s.save();
+		if (s instanceof Save){
+			((Save) s).save();
+		}
+		else if (s instanceof Load){
+			((Load) s).save();
+		}
 		
 		curFile = file;
 		diffFile = false;
@@ -493,6 +499,8 @@ public class CalendarModel extends Observable {
 	 * @param uri the path to load the file from, null if a new file should be loaded
 	 * @throws IOException if an I/O error occurs while writing stream header
 	 */
+	
+	/**
 	public void load(File file, Load l) throws IOException, ClassNotFoundException {
 		
 		l.save();
@@ -502,7 +510,8 @@ public class CalendarModel extends Observable {
 		this.setChanged();
 		this.notifyObservers();
 	}
-
+	**/
+	
 	/**
 	 * Returns the set of Appointment templates
 	 * 

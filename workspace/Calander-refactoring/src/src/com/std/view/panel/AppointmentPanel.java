@@ -116,7 +116,7 @@ public class AppointmentPanel extends JToggleButton {
 	 * to create all of the text areas
 	 * @return returns a new JTextArea
 	 */
-	
+
 	private JTextArea createTextArea() {
 		JTextArea ret = new JTextArea();
 		ret.setBorder(new LineBorder(new Color(0x80FFFFFF, true)));
@@ -127,7 +127,7 @@ public class AppointmentPanel extends JToggleButton {
 		ret.setFocusable(false);
 		return ret;
 	}
-	
+
 	/**
 	 * This is the constructor of the appointment panel it
 	 * creates all of the data fields and sets up the buttons

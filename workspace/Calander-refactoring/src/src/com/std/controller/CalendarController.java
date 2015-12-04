@@ -166,7 +166,7 @@ public class CalendarController implements Observer {
 		if(dialog.getFile() != null) {
 			String path = dialog.getDirectory() + dialog.getFile();
 			try {
-				theModel.load(new File(path), new Load(new File(path), theModel));
+				theModel.save(new File(path), new Load(new File(path), theModel));
 				ret = true;
 			} catch(Exception ex) {
 				handleException(ex);

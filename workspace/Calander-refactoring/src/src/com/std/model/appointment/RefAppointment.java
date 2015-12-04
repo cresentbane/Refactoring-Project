@@ -335,20 +335,22 @@ public class RefAppointment extends java.util.Observable implements Serializable
 	 * @throws ClassNotFoundException if there is a casting error
 	 * @throws IOException an I/O exception of some sort has occurred
 	 */
+	/**
 	private void readObject(ObjectInputStream istream) throws ClassNotFoundException, IOException {
 		setTemplate((AppointmentTemplate)istream.readObject());
 		internalSetStartDate((Date)istream.readObject());
 	}
-	
+	**/
 	/**
 	 * Saves the object to an object output stream
 	 * 
 	 * @param ostream the object stream to be writing to
 	 * @throws IOException an I/O exception of some sort has occurred
 	 */
+	/**
 	private void writeObject(ObjectOutputStream ostream) throws IOException {
 		ostream.writeObject(getTemplate());
 		ostream.writeObject(getStartDate());
 	}
-
+	**/
 }

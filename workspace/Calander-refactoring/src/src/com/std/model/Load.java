@@ -11,17 +11,31 @@ import java.util.Set;
 import src.com.std.model.appointment.AppointmentTemplate;
 import src.com.std.model.appointment.RefAppointment;
 
+/**
+ * This class is responsible for importing a calendar 
+ * file into the system.
+ * @author aliqa
+ */
 public class Load implements Persist{
 
 	File file;
 	CalendarModel cm;
 	
+	/**
+	 * The constructor takes the file the calendar must be imported 
+	 * from and the model to relay the information
+	 * @param file
+	 * @param c
+	 */
 	public Load(File file, CalendarModel c) {
 		super();
 		this.file = file;
 		this.cm = c;
 	}
 	
+	/**
+	 * The method that saves the calendar file in the model.
+	 */
 	public void save() throws FileNotFoundException, IOException, ClassNotFoundException {
 		Set<AppointmentTemplate> apptTmplSet = new HashSet<AppointmentTemplate>();
 		Set<RefAppointment> apptSet = new HashSet<RefAppointment>();

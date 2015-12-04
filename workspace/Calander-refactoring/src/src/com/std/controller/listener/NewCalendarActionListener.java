@@ -41,7 +41,7 @@ public class NewCalendarActionListener implements ActionListener {
 	 */
 	public void actionPerformed(ActionEvent e) {
 		try {
-			controller.getModel().load(null, new Load(null, controller.getModel()));
+			controller.getModel().save(null, new Load(null, controller.getModel()));
 		} catch(Exception ex) {
 			controller.handleException(ex);
 		}
