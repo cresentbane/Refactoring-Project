@@ -346,7 +346,7 @@ public class CalendarView extends JFrame {
 		tabs.add(dailyView, "Day View");
 		
 		
-		JLabel logo = new JLabel(new ImageIcon(ImageIO.read(new File("src/img/logo.png"))));
+		JLabel logo = new JLabel(new ImageIcon(getClass().getResource(("/img/logo.png"))));
 		logo.setBorder(new EmptyBorder(4, 4, 4, 4));
 		logo.setHorizontalAlignment(SwingConstants.RIGHT);
 		
@@ -375,7 +375,8 @@ public class CalendarView extends JFrame {
 		setTitle("Untitled Calendar - DCal");
 		setBackground(Color.WHITE);
 		
-		this.setIconImage(ImageIO.read(new File("src/img/icon.png")));
+		ImageIcon logoPic = new ImageIcon(getClass().getResource(("/img/logo.png")));
+		this.setIconImage(logoPic.getImage());
 		
 		pack();
 		setMinimumSize(getSize());
